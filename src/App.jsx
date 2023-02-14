@@ -1,5 +1,15 @@
+import ButtonContainer from './components/ButtonContainer';
+import InputContainer from './components/InputContainer';
+import GlobalStyle from './style/GlobalStyle';
+
 function App() {
-  return <div>hello, world</div>;
+  return (
+    <>
+      <GlobalStyle />
+      <ButtonContainer></ButtonContainer>
+      <InputContainer></InputContainer>
+    </>
+  );
 }
 
 export default App;
