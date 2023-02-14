@@ -3,6 +3,13 @@ import styled, { css } from 'styled-components';
 
 const BtnStyle = styled.button`
   margin: 0.625rem;
+  :hover {
+    cursor: pointer;
+  }
+  :active {
+    opacity: 0.7;
+  }
+
   ${(props) =>
     props.lgBtn &&
     css`

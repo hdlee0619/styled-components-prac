@@ -7,16 +7,22 @@ const BtnWrapper = styled.div`
 `;
 
 function ButtonContainer() {
+  const promptHandler = () => {
+    const answer = prompt('어렵나요?');
+    console.log(answer);
+  };
   return (
     <div>
       <h2>Button</h2>
       <BtnWrapper>
-        <Btn lgBtn>Large Primary Button</Btn>
+        <Btn onClick={() => alert('버튼을 만들어보세요')} lgBtn>
+          Large Primary Button
+        </Btn>
         <Btn>Medium</Btn>
         <Btn smBtn>Small</Btn>
       </BtnWrapper>
       <BtnWrapper>
-        <Btn lgBtn danger dangerBg>
+        <Btn onClick={promptHandler} lgBtn danger dangerBg>
           Large Primary Button
         </Btn>
         <Btn danger>Medium</Btn>
