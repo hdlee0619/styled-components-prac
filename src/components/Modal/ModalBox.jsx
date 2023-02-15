@@ -1,11 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Btn from '../Btn';
+import ModalWrap from './ModalWrap';
 import styled from 'styled-components';
+import useOutSideClick from '../../hook/useOutSideClick';
 
-function ModalBox({ children, onClose }) {
+function ModalBox({ children, onClose, confirm }) {
+  const modalRef = useRef(null);
+  useOutSideClick(modalRef, onClose);
   useEffect(() => {
     const $body = document.querySelector('body');
-    console.log('$body -> ', $body);
     const overflow = $body.style.overflow;
     $body.style.overflow = 'hidden'; // body를 hidden 으로 변경
     // modal 컴포넌트가 사라졌을 때 body를 다시 스크롤 가능하게 만들어주도록 클린업 사용
@@ -15,36 +18,19 @@ function ModalBox({ children, onClose }) {
   }, []);
 
   return (
-    <ModalBg>
-      <ModalWrapper>
-        <Modal>
-          <ModalText>{children}</ModalText>
-          <BtnWrapper>
-            <Btn onClick={onClose} smBtn danger>
-              닫기
-            </Btn>
-            <Btn smBtn>확인</Btn>
-          </BtnWrapper>
-        </Modal>
-      </ModalWrapper>
-    </ModalBg>
+    <ModalWrap>
+      <Modal ref={!confirm ? modalRef : null}>
+        <ModalText>{children}</ModalText>
+        <BtnWrapper>
+          <Btn onClick={onClose} smBtn danger>
+            닫기
+          </Btn>
+          {confirm && <Btn smBtn>확인</Btn>}
+        </BtnWrapper>
+      </Modal>
+    </ModalWrap>
   );
 }
-
-const ModalBg = styled.div`
-  background-color: rgba(0, 0, 0, 0.5);
-  position: fixed;
-  inset: 0px;
-  width: 100%;
-  height: 100vh;
-`;
-
-const ModalWrapper = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-`;
 
 const Modal = styled.div`
   display: flex;
