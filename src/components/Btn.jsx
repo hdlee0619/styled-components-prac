@@ -1,6 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+function Btn({ children, ...props }) {
+  return <BtnStyle {...props}>{children}</BtnStyle>;
+}
+
 const BtnStyle = styled.button`
   margin: 0.625rem;
   :hover {
@@ -33,9 +37,5 @@ const BtnStyle = styled.button`
       border: var(--lg-danger-box-border);
     `}
 `;
-
-function Btn({ children, ...props }) {
-  return <BtnStyle {...props}>{children}</BtnStyle>;
-}
 
 export default Btn;

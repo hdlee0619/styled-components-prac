@@ -2,10 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Btn from './Btn';
 
-const BtnWrapper = styled.div`
-  display: flex;
-`;
-
 function ButtonContainer() {
   const promptHandler = () => {
     const answer = prompt('어렵나요?');
@@ -33,5 +29,9 @@ function ButtonContainer() {
     </div>
   );
 }
+
+const BtnWrapper = styled.div`
+  display: flex;
+`;
 
 export default ButtonContainer;

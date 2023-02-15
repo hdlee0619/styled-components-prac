@@ -3,12 +3,6 @@ import InputBox from './InputBox';
 import Btn from './Btn';
 import styled from 'styled-components';
 
-const InputWrapper = styled.form`
-  display: flex;
-  align-items: center;
-  margin: 0.625rem;
-`;
-
 function InputContainer() {
   const [{ userName, price }, setInputValue] = useState({ userName: '', price: '' });
 
@@ -48,5 +42,11 @@ function InputContainer() {
     </>
   );
 }
+
+const InputWrapper = styled.form`
+  display: flex;
+  align-items: center;
+  margin: 0.625rem;
+`;
 
 export default InputContainer;

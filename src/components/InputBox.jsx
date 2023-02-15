@@ -1,10 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Input = styled.input`
-  margin: 0 1.0625rem 0 0.625rem;
-`;
-
 function InputBox({ children, ...props }) {
   return (
     <>
@@ -13,5 +9,9 @@ function InputBox({ children, ...props }) {
     </>
   );
 }
+
+const Input = styled.input`
+  margin: 0 1.0625rem 0 0.625rem;
+`;
 
 export default InputBox;
