@@ -1,6 +1,6 @@
 import ButtonContainer from './components/ButtonContainer';
 import InputContainer from './components/InputContainer';
-import ModalContainer from './components/ModalContainer';
+import ModalContainer from './components//Modal/ModalContainer';
 import GlobalStyle from './style/GlobalStyle';
 
 function App() {

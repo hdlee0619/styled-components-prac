@@ -1,5 +1,5 @@
 import React from 'react';
-import Btn from './Btn';
+import Btn from '../Btn';
 import styled from 'styled-components';
 
 const ModalBg = styled.div`
@@ -38,14 +38,17 @@ const BtnWrapper = styled.div`
   justify-content: flex-end;
 `;
 
-function ModalBox({ children }) {
+function ModalBox({ children, onClose }) {
+  const CloseHandler = () => {
+    onClose?.();
+  };
   return (
-    <ModalBg>
+    <ModalBg isOpen>
       <ModalWrapper>
         <Modal>
           <ModalText>{children}</ModalText>
           <BtnWrapper>
-            <Btn smBtn danger>
+            <Btn onClick={CloseHandler} smBtn danger>
               닫기
             </Btn>
             <Btn smBtn>확인</Btn>
