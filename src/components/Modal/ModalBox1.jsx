@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Btn from '../Btn';
 import styled from 'styled-components';
+import useOutSideClick from '../../hook/useOutSideClick';
 
-function ModalBox({ children, onClose }) {
+function ModalBox1({ children, onClose }) {
+  const closeHandler = () => {
+    onClose();
+  };
+  const modalRef = useRef(null);
+  useOutSideClick(modalRef, closeHandler);
   return (
     <ModalBg>
-      <ModalWrapper>
+      <ModalWrapper ref={modalRef}>
         <Modal>
           <ModalText>{children}</ModalText>
           <BtnWrapper>
-            <Btn onClick={onClose} smBtn danger>
+            <Btn onClick={closeHandler} smBtn danger>
               닫기
             </Btn>
-            <Btn smBtn>확인</Btn>
           </BtnWrapper>
         </Modal>
       </ModalWrapper>
@@ -56,4 +61,4 @@ const BtnWrapper = styled.div`
   justify-content: flex-end;
 `;
 
-export default ModalBox;
+export default ModalBox1;
