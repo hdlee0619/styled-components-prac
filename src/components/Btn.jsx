@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import theme from '../style/Theme';
 
 function Btn({ children, ...props }) {
   return <BtnStyle {...props}>{children}</BtnStyle>;
@@ -7,34 +8,37 @@ function Btn({ children, ...props }) {
 
 const BtnStyle = styled.button`
   margin: 0.625rem;
-  :hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
+  width: 8.125rem;
+  height: 2.8125rem;
+  border-radius: 0.6875rem;
+  border: none;
+  background-color: ${theme.successColor};
+  font-size: 1rem;
   :active {
     opacity: 0.7;
   }
-
   ${(props) =>
     props.lgBtn &&
     css`
-      background-color: var(--lg-box-bgcolor);
-      border: var(--lg-box-border);
-      width: var(--lg-box-width);
-      height: var(--lg-box-height);
+      background-color: ${theme.largeBgColor};
+      border: 0.1875rem solid ${theme.successColor};
+      width: 12.5rem;
+      height: 3.125rem;
       font-weight: bold;
     `}
   ${(props) =>
     props.smBtn &&
     css`
-      width: var(--sm-box-width);
-      height: var(--sm-box-height);
+      width: 6.25rem;
+      height: 2.625rem;
     `}
     ${(props) =>
     props.danger &&
     css`
-      background-color: ${(props) => (props.dangerBg ? 'var(--lg-box-bgcolor)' : 'var(--color-danger)')};
-      color: var(--color-danger-text);
-      border: var(--lg-danger-box-border);
+      background-color: ${(props) => (props.dangerBg ? theme.largeBgColor : theme.dangerColor)};
+      color: ${theme.dangerColorText};
+      border: 0.1875rem solid #fab1a0;
     `}
 `;
 
